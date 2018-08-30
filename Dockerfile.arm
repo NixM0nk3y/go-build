@@ -1,6 +1,6 @@
 FROM alpine:3.8 as qemu
 
-ARG QEMU_VERSION=2.9.1-1
+ARG QEMU_VERSION=2.12.0-1
 ARG QEMU_ARCHS="arm"
 
 RUN apk --update add curl
@@ -75,7 +75,7 @@ RUN go get -u golang.org/x/vgo
 # Ensure that everything under the GOPATH is writable by everyone
 RUN chmod -R 777 $GOPATH
 
-RUN curl -sSL https://github.com/estesp/manifest-tool/releases/download/${MANIFEST_TOOL_VERSION}/manifest-tool-linux-arm64 > manifest-tool && \
+RUN curl -sSL https://github.com/estesp/manifest-tool/releases/download/${MANIFEST_TOOL_VERSION}/manifest-tool-linux-armv7 > manifest-tool && \
     chmod +x manifest-tool && \
     mv manifest-tool /usr/bin/
 
